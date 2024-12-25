@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo Gallery</title>
+    <style>
+      /* Global Styling */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #121212; /* Dark theme */
+        color: #f1f1f1;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        text-align: center;
+        padding: 20px;
+        background-color: #1f1f1f;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.5em;
+        color: #f48fb1;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 15px;
+        padding: 20px;
+      }
+
+      .gallery img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      }
+
+      .gallery img:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+      }
+
+      footer {
+        text-align: center;
+        padding: 10px;
+        background-color: #1f1f1f;
+        color: #9e9e9e;
+        font-size: 0.9em;
+        margin-top: 20px;
+      }
+
+      footer a {
+        color: #f48fb1;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>My Photo Gallery</h1>
+    </header>
+
+    <main class="gallery">
+      <!-- Add your images here -->
+      <img src="https://via.placeholder.com/150" alt="Friend 1" />
+      <img src="https://via.placeholder.com/150" alt="Friend 2" />
+      <img src="https://via.placeholder.com/150" alt="Friend 3" />
+      <img src="https://via.placeholder.com/150" alt="Friend 4" />
+      <img src="https://via.placeholder.com/150" alt="Friend 5" />
+      <img src="https://via.placeholder.com/150" alt="Friend 6" />
+    </main>
+
+    <footer>
+      <p>© 2024 My Photo Gallery. Built with ❤️ by <a href="#">You</a>.</p>
+    </footer>
+  </body>
+</html>
