@@ -1,85 +1,259 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8" />
-<title>Jurnal Penjualan</title>
-<style>
-body{font-family:Arial,sans-serif;background:#121212;color:#fff;padding:30px;margin:0;min-height:100vh;display:flex;justify-content:center;align-items:center}
-#page1,#page2{max-width:700px;width:100%;display:none;flex-direction:column;align-items:center;text-align:center}
-#page1.active,#page2.active{display:flex}
-.welcome-message{font-size:28px;margin-bottom:30px;line-height:1.3;color:#eee}
-button{background:#1e1e1e;color:#fff;border:none;padding:15px 20px;cursor:pointer;font-size:18px;border-radius:5px;transition:background-color .3s;box-shadow:0 4px 15px rgba(255,255,255,0.15)}
-button:hover{background:#333}
-.start-button{padding:18px 30px;font-size:20px;box-shadow:0 4px 15px rgba(255,255,255,0.15)}
-.header{margin-bottom:20px;width:100%;color:#ccc;padding:15px 20px;background:#222;border-radius:6px;box-shadow:inset 0 0 5px #444;text-align:left}
-.header p{margin:6px 0;font-size:17px}
-h2{text-align:center;margin-bottom:20px;color:#fff}
-.toggle-button{display:block;margin:0 auto 25px auto}
-.table-container{display:none;margin-top:0;width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
-table{width:100%;border-collapse:collapse;background:#1e1e1e;box-shadow:0 2px 12px rgba(0,0,0,.7);border-radius:6px;overflow:hidden;min-width:600px}
-th,td{border:1px solid #444;padding:10px;text-align:left;font-size:14px;white-space:nowrap}
-th{background:#333;font-weight:700;color:#ddd}
-tfoot td{font-weight:700;background:#222}
-.text-right{text-align:right}
-@media(max-width:480px){
-  body{padding:15px}
-  .header{font-size:14px;padding:12px 15px}
-  h2{font-size:22px;margin-bottom:15px}
-  button{font-size:16px;padding:14px 20px}
-  th,td{font-size:12px;padding:6px 8px}
-  table{min-width:100%}
-}
-</style>
+  <meta charset="UTF-8" />
+  <title>Jurnal Penjualan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+      padding: 30px;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #page1, #page2 {
+      max-width: 700px;
+      width: 100%;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    #page1.active, #page2.active {
+      display: flex;
+    }
+
+    .welcome-message {
+      font-size: 28px;
+      margin-bottom: 30px;
+      line-height: 1.3;
+      color: #eee;
+    }
+
+    .start-button {
+      background-color: #1e1e1e;
+      color: #ffffff;
+      border: none;
+      padding: 18px 30px;
+      cursor: pointer;
+      font-size: 20px;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      box-shadow: 0 4px 15px rgba(255,255,255,0.15);
+    }
+
+    .start-button:hover {
+      background-color: #333333;
+    }
+
+    .header {
+      margin-bottom: 20px;
+      width: 100%;
+      color: #ccc;
+      padding: 15px 20px;
+      background-color: #222;
+      border-radius: 6px;
+      box-shadow: inset 0 0 5px #444;
+      text-align: left;
+    }
+
+    .header p {
+      margin: 6px 0;
+      font-size: 17px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .toggle-button {
+      background-color: #1e1e1e;
+      color: #ffffff;
+      border: none;
+      padding: 15px 20px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      display: block;
+      margin: 0 auto 25px auto;
+      box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+    }
+
+    .toggle-button:hover {
+      background-color: #333333;
+    }
+
+    .table-container {
+      display: none;
+      margin-top: 0;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #1e1e1e;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.7);
+      border-radius: 6px;
+      overflow: hidden;
+      min-width: 600px;
+    }
+
+    th, td {
+      border: 1px solid #444;
+      padding: 10px;
+      text-align: left;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    th {
+      background-color: #333;
+      font-weight: bold;
+      color: #ddd;
+    }
+
+    tfoot td {
+      font-weight: bold;
+      background-color: #222;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 480px) {
+      body {
+        padding: 15px;
+      }
+      .header {
+        font-size: 14px;
+        padding: 12px 15px;
+      }
+      h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+      }
+      .toggle-button, .start-button {
+        font-size: 16px;
+        padding: 14px 20px;
+      }
+      th, td {
+        font-size: 12px;
+        padding: 6px 8px;
+      }
+      table {
+        min-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-<div id="page1" class="active">
-  <div class="welcome-message">Selamat datang di Jurnal Penjualan.<br>Klik tombol di bawah untuk melanjutkan.</div>
-  <button class="start-button" onclick="showPage2()">Mulai</button>
-</div>
 
-<div id="page2">
-  <div class="header">
-    <p><strong>Nama :</strong> Muzaki Ardi Satrio </p>
-    <p><strong>NPM :</strong> 21224347 </p>
-    <p><strong>Kelas :</strong> 1EB04 </p>
+  <div id="page1" class="active">
+    <div class="welcome-message">
+      Selamat datang di Jurnal Penjualan.<br />
+      Klik tombol di bawah untuk melanjutkan.
+    </div>
+    <button class="start-button" onclick="showPage2()">Mulai</button>
   </div>
-  <h2>Jurnal Penjualan</h2>
-  <button class="toggle-button" onclick="toggleTable()">Tampilkan Jurnal Penjualan</button>
-  <div class="table-container" id="tableContainer">
-    <table>
-      <thead>
-        <tr><th>Tanggal</th><th>No. Faktur</th><th>Nama Pelanggan</th><th>Keterangan</th><th>Ref</th><th>Debit (Piutang)</th><th>Kredit (Penjualan)</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>2025-05-06</td><td>INV-20250506-001</td><td>Toko Maju Jaya</td><td>Penjualan tunai</td><td>KKM-01</td><td></td><td class="text-right">Rp 1.500.000</td></tr>
-        <tr><td>2025-05-06</td><td>INV-20250506-002</td><td>PT. Sumber Rezeki</td><td>Penjualan kredit</td><td></td><td class="text-right">Rp 2.800.000</td><td class="text-right">Rp 2.800.000</td></tr>
-        <tr><td>2025-05-07</td><td>INV-20250507-003</td><td>Ibu Ani</td><td>Penjualan tunai</td><td>KKM-02</td><td></td><td class="text-right">Rp 750.000</td></tr>
-      </tbody>
-      <tfoot>
-        <tr><td colspan="5" class="text-right">Total:</td><td class="text-right">Rp 2.800.000</td><td class="text-right">Rp 5.050.000</td></tr>
-      </tfoot>
-    </table>
-  </div>
-</div>
 
-<script>
-function showPage2(){
-  document.getElementById('page1').classList.remove('active');
-  document.getElementById('page2').classList.add('active');
-  window.scrollTo(0,0);
-}
-function toggleTable(){
-  const c=document.getElementById('tableContainer');
-  const b=document.querySelector('.toggle-button');
-  if(c.style.display==='block'){
-    c.style.display='none';
-    b.textContent='Tampilkan Jurnal Penjualan';
-  }else{
-    c.style.display='block';
-    b.textContent='Sembunyikan Jurnal Penjualan';
-  }
-}
-</script>
+  <div id="page2">
+    <div class="header">
+      <p><strong>Nama :</strong> Ahmad Apandi</p>
+      <p><strong>NPM :</strong> 12345678</p>
+      <p><strong>Kelas :</strong> 1EB00</p>
+    </div>
+
+    <h2>Jurnal Penjualan</h2>
+
+    <button class="toggle-button" onclick="toggleTable()">Tampilkan Jurnal Penjualan</button>
+
+    <div class="table-container" id="tableContainer">
+      <table>
+        <thead>
+          <tr>
+            <th>Tanggal</th>
+            <th>No. Faktur</th>
+            <th>Nama Pelanggan</th>
+            <th>Keterangan</th>
+            <th>Ref</th>
+            <th>Debit (Piutang)</th>
+            <th>Kredit (Penjualan)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2025-05-06</td>
+            <td>INV-20250506-001</td>
+            <td>Toko Maju Jaya</td>
+            <td>Penjualan tunai</td>
+            <td>KKM-01</td>
+            <td></td>
+            <td class="text-right">Rp 1.500.000</td>
+          </tr>
+          <tr>
+            <td>2025-05-06</td>
+            <td>INV-20250506-002</td>
+            <td>PT. Sumber Rezeki</td>
+            <td>Penjualan kredit</td>
+            <td></td>
+            <td class="text-right">Rp 2.800.000</td>
+            <td class="text-right">Rp 2.800.000</td>
+          </tr>
+          <tr>
+            <td>2025-05-07</td>
+            <td>INV-20250507-003</td>
+            <td>Ibu Ani</td>
+            <td>Penjualan tunai</td>
+            <td>KKM-02</td>
+            <td></td>
+            <td class="text-right">Rp 750.000</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5" class="text-right">Total:</td>
+            <td class="text-right">Rp 2.800.000</td>
+            <td class="text-right">Rp 5.050.000</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    function showPage2() {
+      document.getElementById('page1').classList.remove('active');
+      document.getElementById('page2').classList.add('active');
+      // Scroll to top after switch
+      window.scrollTo(0,0);
+    }
+
+    function toggleTable() {
+      const container = document.getElementById('tableContainer');
+      const btn = document.querySelector('.toggle-button');
+      if (container.style.display === 'block') {
+        container.style.display = 'none';
+        btn.textContent = 'Tampilkan Jurnal Penjualan';
+      } else {
+        container.style.display = 'block';
+        btn.textContent = 'Sembunyikan Jurnal Penjualan';
+      }
+    }
+  </script>
 </body>
 </html>
 </content>
